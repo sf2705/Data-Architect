@@ -92,7 +92,19 @@ Insert into Player(player_nm, team_id, position_id) Select s.player, t.team_id, 
 From stg as s Join team as t On s.team = t.team_nm
 			  Join position as p On s.position = p.position_nm;
 
+------ CRUD
 
+--insert
+Insert into Test (Column_A, Column_B) Values (1, 'Hello'), (2, 'Good-bye');
+
+--update
+Update Test Set Column_B = 'Bonjour' where Column_A = 1;
+
+--delete: target individual records
+Delete from Test Where Column_a = 1;
+
+--truncate: remove everything from the table
+Truncate table Test;
 
 
 
