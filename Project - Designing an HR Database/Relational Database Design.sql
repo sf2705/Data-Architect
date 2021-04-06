@@ -6,7 +6,7 @@ CREATE TABLE "Position" (
 );
 
 CREATE TABLE "Department" (
-  "Department_ID(" serial primary key,
+  "Department_ID" serial primary key,
   "Department" Varchar(100)
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE "City" (
 );
 
 CREATE TABLE "Salary" (
-  "Salary_ID(PK)" serial primary key,
+  "Salary_ID" serial primary key,
   "Salary" Float
 );
 
@@ -34,18 +34,19 @@ CREATE TABLE "Location" (
   "Location_ID" serial primary key,
   "Location" Varchar(100),
   "Address" Varchar(200),
-  "City_ID" Int references City(City_ID))
+  "City_ID" Int references "City"("City_ID")
 );
 
 CREATE TABLE "History" (
-  "Emp_ID(PK)(FK)" Int references Employee(employee_id)),
-  "Start_DT(PK)" Date,
+  "Emp_ID" Int references "Employee"("Emp_ID"),
+  "Start_DT" Date,
   "End_DT" Date,
-  "Job_ID(FK)" Int references Position(job_id)),
-  "Department_ID(FK)" Int references Department(department_id)),
-  "Location_ID(FK)" Int references Location(location_id)),
-  "Salary_ID(FK)" Int references Salary(salary_id)),
-  "Manager_ID(FK)" Int references Employee(employee_id))
+  "Job_ID" Int references "Position"("Job_ID"),
+  "Department_ID" Int references "Department"("Department_ID"),
+  "Location_ID" Int references "Location"("Location_ID"),
+  "Salary_ID" Int references "Salary"("Salary_ID"),
+  "Manager_ID" Int references "Employee"("Emp_ID"),
+  Primary key ("Emp_ID", "Start_DT")
 );
 
 
